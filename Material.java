@@ -7,4 +7,6 @@ public class Material {
 	private Date loanPeriod;
 	private boolean flag;
 	private String Title;
+	
+	
 }

@@ -6,4 +6,25 @@ public class DVD extends Material{
 	private Date releaseDate;
 	private int durationMin;
 	
+	public DVD() {
+		
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public int getDurationMin() {
+		return durationMin;
+	}
+
+	public void setDurationMin(int durationMin) {
+		this.durationMin = durationMin;
+	}
+	
+	
 }

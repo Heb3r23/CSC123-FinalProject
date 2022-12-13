@@ -17,17 +17,17 @@ public class Membership {
 		lName = member.getlName();
 		dob = member.getDob();
 		city = member.getCity();
-		zipCode = member.getCity();
+		zipCode = member.getZipCode();
 		membershipNum += 1;
 	}
 	public Membership(Person member, Person guard) {
 		this(member);
 		guardian = guard;
 	}
-	public static int getMembershipNum() {
+	public int getMembershipNum() {
 		return membershipNum;
 	}
-	public static void setMembershipNum(int membershipNum) {
+	public void setMembershipNum(int membershipNum) {
 		Membership.membershipNum = membershipNum;
 	}
 	public String getfName() {
@@ -67,5 +67,12 @@ public class Membership {
 		this.guardian = guardian;
 	}
 	
-	
+	@Override
+	public String toString() {
+		String ret = (fName + " : " + lName + " : " + df.format(dob) + " : " + city + " : " + zipCode );
+		if (guardian != null) {
+			ret += "\n" + "Guardian Details: \n" + guardian;
+		}
+		return ret;
+	}
 }

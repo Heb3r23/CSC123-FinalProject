@@ -85,7 +85,7 @@ public class Person {
 
 	@Override
 	public String toString(){
-		String ret = (fName + " : " + lName + " : " + df.format(dob));
+		String ret = (fName + " : " + lName + " : " + df.format(dob) + " : " + city + " : " + zipCode );
 		return (ret);
 	}
 }
