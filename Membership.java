@@ -3,7 +3,8 @@ import java.util.Date;
 import java.util.Calendar;
 
 public class Membership {
-	private static int membershipNum = 1000;
+	private static int membershipNumCount = 1000;
+	private static int membershipNum;
 	private String fName;
 	private String lName;
 	private Date dob;
@@ -18,7 +19,7 @@ public class Membership {
 		dob = member.getDob();
 		city = member.getCity();
 		zipCode = member.getZipCode();
-		membershipNum += 1;
+		membershipNum = ++membershipNumCount;
 	}
 	public Membership(Person member, Person guard) {
 		this(member);

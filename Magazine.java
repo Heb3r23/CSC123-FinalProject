@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -6,8 +7,10 @@ public class Magazine extends Material {
 	private Date publicationDate;
 	private int issueNumber;
 	
-	public Magazine() {
-		
+	public Magazine(int rv, boolean f, boolean available, String tit, String pubDate, int issue) throws ParseException {
+		super(rv, 2, f, available, tit);
+		publicationDate = df.parse(pubDate);
+		issueNumber = issue;
 	}
 
 	public Date getPublicationDate() {

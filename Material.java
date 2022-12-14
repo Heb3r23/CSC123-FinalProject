@@ -1,12 +1,59 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
 
 public class Material {
-	private int replacementValue;
-	private Date loanPeriod;
-	private boolean flag;
-	private String Title;
+	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
+	protected static int itemIdCount = 9000;
+	protected int itemId;
+	protected int replacementValue;
+	protected int loanPeriod;
+	protected boolean flag;
+	protected boolean isAvailable;
+	protected String title;
+	
+	public Material(int rv, int lp, boolean f, boolean available, String tit) throws ParseException {
+		replacementValue = rv;
+		loanPeriod = lp;
+		flag = f;
+		isAvailable = available;
+		title = tit;
+		itemId = ++itemIdCount;
+	}
+	public void setIsAvailable(boolean set) {
+		isAvailable = set;
+	}
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+	public int getLoanPeriod() {
+		return loanPeriod;
+	}
+	public void setLoanPeriod(int loanPeriod) {
+		this.loanPeriod = loanPeriod;
+	}
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	
 }

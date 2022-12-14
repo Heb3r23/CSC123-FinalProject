@@ -16,6 +16,21 @@ public class Main {
 		String tempCity;
 		String tempZip;
 		
+		int tempRepVal;
+		boolean tempFlag;
+		String tempTitle;
+		
+		String tempAuth;
+		String tempIsbn;
+		int tempNumPages;
+		
+		String tempPubDate;
+		int tempIssue;
+		
+		String tempRelDate;
+		int tempDuration;
+		String type;
+		
 		printMenu();
 		menuSelection = input.nextInt();
 		input.nextLine();
@@ -58,16 +73,65 @@ public class Main {
 				
 			} 
 			else if (menuSelection == 2) {
-
+				System.out.println("Enter material type (Book, Magazine, DVD): ");
+				type = input.nextLine();
+				System.out.println("Please enter replacement value");
+				tempRepVal = input.nextInt();
+				input.nextLine();
+				System.out.println("Please enter false if this material is suitable for children, otherwise enter true: ");
+				tempFlag = input.nextBoolean();
+				input.nextLine();
+				System.out.println("Please enter the title of the material: ");
+				tempTitle = input.nextLine();
+				
+				if (type.equalsIgnoreCase("Book")) {
+					System.out.println("Please enter the author of the material: ");
+					tempAuth = input.nextLine();
+					System.out.println("Please enter the ISBN of the material: ");
+					tempIsbn = input.nextLine();
+					System.out.println("Please enter the number of pages of the material: ");
+					tempNumPages = input.nextInt();
+					input.nextLine();
+					
+					Book b = new Book(tempRepVal, tempFlag, true, tempTitle, tempAuth, tempIsbn, tempNumPages);
+					Library.addMaterial(b);
+					
+					System.out.println("Item created with ItemID: " + b.getItemId());
+				}
+				else if(type.equalsIgnoreCase("Magazine")) {
+					
+				}
+				else if((type.equalsIgnoreCase("DVD"))){
+					
+				}
+				else {
+					System.out.println("Error: invalid input");
+				}
 			} 
 			else if (menuSelection == 3) {
-
+				int lookupNumber;
+				int lookupNumber2;
+				System.out.println("Please enter itemID for item to issue");
+				lookupNumber = input.nextInt();
+				input.nextLine();
+				System.out.println("Please enter memberID of member recieving item");
+				lookupNumber2 = input.nextInt();
+				input.nextLine();
+				
+				Membership m = Library.lookUpMember(lookupNumber2);
+				if(m != null) {
+					Library.issueItem(m, lookupNumber);
+				}
+				else {
+					System.out.println("Error, invalid memberID");
+				}
+				
 			} 
 			else if (menuSelection == 4) {
 
 			} 
 			else if (menuSelection == 5) {
-
+				Library.reportInventory();
 			} 
 			else if (menuSelection == 6) {
 
@@ -89,6 +153,7 @@ public class Main {
 			}
 			printMenu();
 			menuSelection = input.nextInt();
+			input.nextLine();
 		}
 
 	}
