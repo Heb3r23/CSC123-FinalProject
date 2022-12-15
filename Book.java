@@ -7,8 +7,8 @@ public class Book extends Material{
 	private String isbn;
 	private int numPages;
 	
-	public Book(int rv, boolean f, boolean available, String tit, String auth, String isb, int pages) throws ParseException {
-		super(rv, 7, f, available, tit);
+	public Book(int rv, boolean f, boolean available, String tit, String auth, String isb, int pages, String loc) throws ParseException {
+		super(rv, 7, f, available, tit, loc);
 		author = auth;
 		isbn = isb;
 		numPages = pages;
@@ -42,7 +42,7 @@ public class Book extends Material{
 	public String toString() {
 		String ret = itemId + " : " + "Book" + " : " + "Available: " + isAvailable;
 		if(isAvailable != true) {
-			ret += " : " + "Currently loaned to: ";
+			ret += " : " + "Currently loaned to " + Library.lookupLoan(itemId).getBorrower().getfName() + ", ID: " + Library.lookupLoan(itemId).getBorrower().getMembershipNum();
 		}
 		return ret;
 	}

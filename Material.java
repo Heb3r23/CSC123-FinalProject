@@ -12,14 +12,16 @@ public class Material {
 	protected boolean flag;
 	protected boolean isAvailable;
 	protected String title;
+	protected String location;
 	
-	public Material(int rv, int lp, boolean f, boolean available, String tit) throws ParseException {
+	public Material(int rv, int lp, boolean f, boolean available, String tit, String loc) throws ParseException {
 		replacementValue = rv;
 		loanPeriod = lp;
 		flag = f;
 		isAvailable = available;
 		title = tit;
 		itemId = ++itemIdCount;
+		location = loc;
 	}
 	public void setIsAvailable(boolean set) {
 		isAvailable = set;

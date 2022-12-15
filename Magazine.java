@@ -7,8 +7,8 @@ public class Magazine extends Material {
 	private Date publicationDate;
 	private int issueNumber;
 	
-	public Magazine(int rv, boolean f, boolean available, String tit, String pubDate, int issue) throws ParseException {
-		super(rv, 2, f, available, tit);
+	public Magazine(int rv, boolean f, boolean available, String tit, String pubDate, int issue, String loc) throws ParseException {
+		super(rv, 2, f, available, tit, loc);
 		publicationDate = df.parse(pubDate);
 		issueNumber = issue;
 	}
@@ -29,4 +29,12 @@ public class Magazine extends Material {
 		this.issueNumber = issueNumber;
 	}
 	
+	@Override
+	public String toString() {
+		String ret = itemId + " : " + "Magazine" + " : " + "Available: " + isAvailable;
+		if(isAvailable != true) {
+			ret += " : " + "Currently loaned to " + Library.lookupLoan(itemId).getBorrower().getfName() + ", ID: " + Library.lookupLoan(itemId).getBorrower().getMembershipNum();
+		}
+		return ret;
+	}
 }

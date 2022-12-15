@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Membership {
 	private static int membershipNumCount = 1000;
-	private static int membershipNum;
+	private int membershipNum;
 	private String fName;
 	private String lName;
 	private Date dob;
@@ -25,6 +25,18 @@ public class Membership {
 		this(member);
 		guardian = guard;
 	}
+	public boolean isAdult() {
+		Date today = new Date();
+		today.setHours(0);
+		Date compBd = new Date();
+		compBd.equals(today);
+		compBd.setYear(today.getYear()-18);
+		if(compBd.before(dob)) {
+			return false;
+		}
+		
+		return true;
+	}
 	public int getMembershipNum() {
 		return membershipNum;
 	}
@@ -43,8 +55,8 @@ public class Membership {
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
-	public Date getDob() {
-		return dob;
+	public String getDob() {
+		return df.format(dob);
 	}
 	public void setDob(Date dob) {
 		this.dob = dob;

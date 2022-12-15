@@ -7,8 +7,8 @@ public class DVD extends Material{
 	private Date releaseDate;
 	private int durationMin;
 	
-	public DVD(int rv, boolean f, boolean available, String tit, String relDate, int duration) throws ParseException {
-		super(rv, 2, f, available, tit);
+	public DVD(int rv, boolean f, boolean available, String tit, String relDate, int duration, String loc) throws ParseException {
+		super(rv, 2, f, available, tit, loc);
 		releaseDate = df.parse(relDate);
 		durationMin = duration;
 	}
@@ -29,5 +29,12 @@ public class DVD extends Material{
 		this.durationMin = durationMin;
 	}
 	
-	
+	@Override
+	public String toString() {
+		String ret = itemId + " : " + "DVD" + " : " + "Available: " + isAvailable;
+		if(isAvailable != true) {
+			ret += " : " + "Currently loaned to " + Library.lookupLoan(itemId).getBorrower().getfName() + ", ID: " + Library.lookupLoan(itemId).getBorrower().getMembershipNum();
+		}
+		return ret;
+	}
 }

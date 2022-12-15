@@ -19,6 +19,7 @@ public class Main {
 		int tempRepVal;
 		boolean tempFlag;
 		String tempTitle;
+		String tempLocation;
 		
 		String tempAuth;
 		String tempIsbn;
@@ -78,34 +79,55 @@ public class Main {
 				System.out.println("Please enter replacement value");
 				tempRepVal = input.nextInt();
 				input.nextLine();
-				System.out.println("Please enter false if this material is suitable for children, otherwise enter true: ");
+				System.out.println("Please enter true if this material is suitable for children, otherwise enter false (Lowercase. Case Sensitive): ");
 				tempFlag = input.nextBoolean();
 				input.nextLine();
+				System.out.println("Please enter the the location of this item (in format \"shelfid.location\" e.g \"101.12\"");
+				tempLocation = input.nextLine();
 				System.out.println("Please enter the title of the material: ");
 				tempTitle = input.nextLine();
 				
 				if (type.equalsIgnoreCase("Book")) {
-					System.out.println("Please enter the author of the material: ");
+					System.out.println("Please enter the author of the book: ");
 					tempAuth = input.nextLine();
-					System.out.println("Please enter the ISBN of the material: ");
+					System.out.println("Please enter the ISBN of the book: ");
 					tempIsbn = input.nextLine();
-					System.out.println("Please enter the number of pages of the material: ");
+					System.out.println("Please enter the number of pages of the book: ");
 					tempNumPages = input.nextInt();
 					input.nextLine();
 					
-					Book b = new Book(tempRepVal, tempFlag, true, tempTitle, tempAuth, tempIsbn, tempNumPages);
+					Book b = new Book(tempRepVal, tempFlag, true, tempTitle, tempAuth, tempIsbn, tempNumPages, tempLocation);
 					Library.addMaterial(b);
 					
 					System.out.println("Item created with ItemID: " + b.getItemId());
 				}
 				else if(type.equalsIgnoreCase("Magazine")) {
+					System.out.println("Please enter the publication date of the magazine (format MM/dd/yyyy): ");
+					tempPubDate = input.nextLine();
+					System.out.println("Please enter the issue number of the magazine: ");
+					tempIssue = input.nextInt();
+					input.nextLine();
 					
+					Magazine m = new Magazine(tempRepVal, tempFlag, true, tempTitle, tempPubDate, tempIssue, tempLocation);
+					Library.addMaterial(m);
+					
+					System.out.println("Item created with ItemID: " + m.getItemId());
 				}
 				else if((type.equalsIgnoreCase("DVD"))){
+					System.out.println("Please enter the release date of the DVD (format MM/dd/yyyy): ");
+					tempRelDate = input.nextLine();
+					System.out.println("Please enter the duration(in minutes) of the DVD: ");
+					tempDuration = input.nextInt();
+					input.nextLine();
+					
+					DVD d = new DVD(tempRepVal, tempFlag, true, tempTitle,tempRelDate, tempDuration, tempLocation);
+					Library.addMaterial(d);
+					
+					System.out.println("Item created with ItemID: " + d.getItemId());
 					
 				}
 				else {
-					System.out.println("Error: invalid input");
+					System.out.println("Error: invalid type input");
 				}
 			} 
 			else if (menuSelection == 3) {
@@ -128,13 +150,19 @@ public class Main {
 				
 			} 
 			else if (menuSelection == 4) {
-
+				int lookupNumber;
+				
+				System.out.println("Please enter itemID for item to return");
+				lookupNumber = input.nextInt();
+				input.nextLine();
+				
+				Library.returnItem(lookupNumber);
 			} 
 			else if (menuSelection == 5) {
 				Library.reportInventory();
 			} 
 			else if (menuSelection == 6) {
-
+				Library.reportLoans();
 			} 
 			else if (menuSelection == 7) {
 				int lookupNumber = 1000;
