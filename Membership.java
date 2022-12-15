@@ -41,7 +41,7 @@ public class Membership {
 		return membershipNum;
 	}
 	public void setMembershipNum(int membershipNum) {
-		Membership.membershipNum = membershipNum;
+		this.membershipNum = membershipNum;
 	}
 	public String getfName() {
 		return fName;
