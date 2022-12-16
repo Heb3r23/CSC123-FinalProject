@@ -1,3 +1,5 @@
+import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
@@ -11,21 +13,28 @@ public class Person {
 	private SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
 	
 	
-	public Person(String fn, String ln, String bd, String cty, String zip) throws Exception{
+	public Person(String fn, String ln, String bd, String cty, String zip) {
 		fName = fn;
 		lName = ln;
-		dob = df.parse(bd);
+		try {
+			dob = df.parse(bd);
+		}
+		catch (ParseException p){
+			System.out.println("ERROR: Unexpected date format, must enter as (MM/dd/yyyy)");
+		}
 		city = cty;
 		zipCode = zip;
 	}
 	
 	public boolean isAdult() {
-		Date today = new Date();
-		today.setHours(0);
-		Date compBd = new Date();
-		compBd.equals(today);
-		compBd.setYear(today.getYear()-18);
-		if(compBd.before(dob)) {
+		
+		Calendar tod = Calendar.getInstance();
+		
+		Calendar comp = Calendar.getInstance();
+		comp.set(tod.get(Calendar.YEAR)-18,tod.get(Calendar.MONTH), tod.get(Calendar.DAY_OF_MONTH)) ;
+		
+		
+		if(comp.getTime().before(dob)) {
 			return false;
 		}
 		

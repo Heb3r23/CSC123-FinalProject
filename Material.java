@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Calendar;
 
 public class Material {
-	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
+	
 	protected static int itemIdCount = 9000;
 	protected int itemId;
 	protected int replacementValue;
@@ -14,7 +14,7 @@ public class Material {
 	protected String title;
 	protected String location;
 	
-	public Material(int rv, int lp, boolean f, boolean available, String tit, String loc) throws ParseException {
+	public Material(int rv, int lp, boolean f, boolean available, String tit, String loc) {
 		replacementValue = rv;
 		loanPeriod = lp;
 		flag = f;

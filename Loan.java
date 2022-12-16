@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 public class Loan {
 	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
@@ -14,9 +15,12 @@ public class Loan {
 		loanedItem = loan;
 		borrower = member;
 		due = new Date();
-		Date today = new Date();
-		today.setHours(0);
-		due.setHours(today.getHours()+(24*loanedItem.getLoanPeriod()));
+		
+		Calendar tod = Calendar.getInstance();
+		
+		Calendar comp = Calendar.getInstance();
+		comp.set(tod.get(Calendar.YEAR),tod.get(Calendar.MONTH), tod.get(Calendar.DAY_OF_MONTH)+3);
+		due = comp.getTime();
 		loanedItem.setAvailable(false);
 	}
 
@@ -59,7 +63,7 @@ public class Loan {
 			status = "Adult";
 		}
 		
-		String ret = "Item ID " + loanedItem.getItemId() + " : " + loanedItem.getTitle() + " : " + borrower.getfName() + " " + borrower.getlName() + " : " + status + " : " + borrower.getDob();
+		String ret = "Item ID " + loanedItem.getItemId() + " : " + loanedItem.getTitle() + " : " + borrower.getfName() + " " + borrower.getlName() + " : " + status + " : " + "Item due on "  + due + " (" + loanedItem.getLoanPeriod() + " days after issue date)";
 		
 		return ret;
 	}

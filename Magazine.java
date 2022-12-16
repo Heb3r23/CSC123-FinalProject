@@ -7,9 +7,14 @@ public class Magazine extends Material {
 	private Date publicationDate;
 	private int issueNumber;
 	
-	public Magazine(int rv, boolean f, boolean available, String tit, String pubDate, int issue, String loc) throws ParseException {
+	public Magazine(int rv, boolean f, boolean available, String tit, String pubDate, int issue, String loc) {
 		super(rv, 2, f, available, tit, loc);
-		publicationDate = df.parse(pubDate);
+		try {
+			publicationDate = df.parse(pubDate);
+		}
+		catch (ParseException p){
+			System.out.println("ERROR: Unexpected date format, must enter as (MM/dd/yyyy)");
+		}
 		issueNumber = issue;
 	}
 

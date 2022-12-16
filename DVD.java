@@ -9,7 +9,12 @@ public class DVD extends Material{
 	
 	public DVD(int rv, boolean f, boolean available, String tit, String relDate, int duration, String loc) throws ParseException {
 		super(rv, 2, f, available, tit, loc);
-		releaseDate = df.parse(relDate);
+		try {
+			releaseDate = df.parse(relDate);
+		}
+		catch (ParseException p){
+			System.out.println("ERROR: Unexpected date format, must enter as (MM/dd/yyyy)");
+		}
 		durationMin = duration;
 	}
 

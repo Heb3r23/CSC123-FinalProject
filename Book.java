@@ -7,7 +7,7 @@ public class Book extends Material{
 	private String isbn;
 	private int numPages;
 	
-	public Book(int rv, boolean f, boolean available, String tit, String auth, String isb, int pages, String loc) throws ParseException {
+	public Book(int rv, boolean f, boolean available, String tit, String auth, String isb, int pages, String loc){
 		super(rv, 7, f, available, tit, loc);
 		author = auth;
 		isbn = isb;
@@ -40,7 +40,7 @@ public class Book extends Material{
 	
 	@Override
 	public String toString() {
-		String ret = itemId + " : " + "Book" + " : " + "Available: " + isAvailable;
+		String ret = itemId + " : " + "Book" + " : " +  "Title = " + title + " : " + "Available: " + isAvailable;
 		if(isAvailable != true) {
 			ret += " : " + "Currently loaned to " + Library.lookupLoan(itemId).getBorrower().getfName() + ", ID: " + Library.lookupLoan(itemId).getBorrower().getMembershipNum();
 		}

@@ -94,6 +94,7 @@ public class Library {
 			if(loans.containsKey(i)) {
 				System.out.println(loans.get(i));
 				flag++;
+				i++;
 			}
 		}
 	}

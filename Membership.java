@@ -26,12 +26,14 @@ public class Membership {
 		guardian = guard;
 	}
 	public boolean isAdult() {
-		Date today = new Date();
-		today.setHours(0);
-		Date compBd = new Date();
-		compBd.equals(today);
-		compBd.setYear(today.getYear()-18);
-		if(compBd.before(dob)) {
+		
+		Calendar tod = Calendar.getInstance();
+		
+		Calendar comp = Calendar.getInstance();
+		comp.set(tod.get(Calendar.YEAR)-18,tod.get(Calendar.MONTH), tod.get(Calendar.DAY_OF_MONTH)) ;
+		
+		
+		if(comp.getTime().before(dob)) {
 			return false;
 		}
 		
@@ -82,7 +84,7 @@ public class Membership {
 	
 	@Override
 	public String toString() {
-		String ret = (fName + " : " + lName + " : " + df.format(dob) + " : " + city + " : " + zipCode );
+		String ret = (fName + " : " + lName + " : " + df.format(dob) + " : " + city + " : " + zipCode + " Membership Number " + membershipNum);
 		if (guardian != null) {
 			ret += "\n" + "Guardian Details: \n" + guardian;
 		}
