@@ -11,7 +11,7 @@ public class Membership {
 	private String city;
 	private String zipCode;
 	private Person guardian;
-	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
+	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	
 	public Membership(Person member) {
 		fName = member.getfName();
