@@ -59,7 +59,7 @@ public class Library {
 			System.out.println("Item loaned to member: " + m.getMembershipNum() + " with loanID: " + l.getLoanId());
 		}
 		else if((lookupMaterial(lookupNum) != null) && (lookupMaterial(lookupNum).isAvailable()) && (!lookupMaterial(lookupNum).flag) && (!m.isAdult())){
-			System.out.println("Error, this material is not suitable for childrem ");
+			System.out.println("Error, this material is not suitable for children ");
 		}
 		else if(lookupMaterial(lookupNum) != null && (lookupMaterial(lookupNum).isAvailable()==false)){
 			System.out.println("Item on loan");
