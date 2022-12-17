@@ -10,7 +10,7 @@ public class Person {
 	private Date dob;
 	private String city;
 	private String zipCode;
-	private SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyy");
+	private SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	
 	
 	public Person(String fn, String ln, String bd, String cty, String zip) {
